@@ -1,0 +1,3 @@
+[submodule "submodules/fxlens"]
+	path = submodules/fxlens
+	url = git@github.com:fxhash/fxlens.git
