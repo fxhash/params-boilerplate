@@ -78,21 +78,21 @@
         },
         select: {
           deserialize: (input, definition) => {
-            return definition.options[parseInt(input, 16)] || definition.default
+            return definition.options.options[parseInt(input, 16)] || definition.default
           },
           bytesLength: () => 1,
         }
       }
 
       // takes the parameters as bytes and outputs an object with the
-      // deserialized parameters, identified by their name in an object
+      // deserialized parameters, identified by their id in an object
       const deserializeParams = (bytes, definition) => {
         const params = {}
         for (const def of definition) {
           // if we don't have any parameters defined in the URL, set the 
           // default value and move on
           if (!bytes) {
-            params[def.name] = def.default
+            params[def.id] = def.default
             continue
           }
           const processor = processors[def.type]
@@ -100,7 +100,7 @@
           const valueBytes = bytes.substring(0, processor.bytesLength() * 2)
           bytes = bytes.substring(processor.bytesLength() * 2)
           // deserialize the bytes into the params
-          params[def.name] = processor.deserialize(valueBytes, def)
+          params[def.id] = processor.deserialize(valueBytes, def)
           // todo: make sure the value is correct based on constraints
         }
         return params
@@ -126,8 +126,8 @@
         features: function(features) {
           this._features = features
         },
-        param: function(name) {
-          return this._paramValues[name]
+        param: function(id) {
+          return this._paramValues[id]
         },
         getParams: function() {
           return this._paramValues
