@@ -31,7 +31,7 @@ $fx.params([
     id: "number_id",
     name: "It's a number",
     type: "number",
-    default: "0.8",
+    default: "1.2",
     options: {
       max: 2,
       min: 1,
@@ -49,9 +49,9 @@ $fx.params([
   },
   {
     id: "color_id",
-    name: "A color",
+    name: "A color23",
     type: "color",
-    default: "#ff000000",
+    default: "ff000000",
   },
   {
     id: "boolean_id",
@@ -68,12 +68,6 @@ $fx.params([
       minLength: 1,
       maxLength: 3
     }
-  },
-  {
-    id: "string_id2",
-    name: "A string",
-    type: "string",
-    default: "hello3",
   },
 ]);
 
