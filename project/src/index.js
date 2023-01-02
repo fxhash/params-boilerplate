@@ -13,8 +13,8 @@ params.push({
   type: "number",
   default: "0.8",
   options: {
-    min: "0",
-    max: "2",
+    min: "1",
+    max: "10",
     step: "0.05",
   },
 });
@@ -29,13 +29,13 @@ $fx.params(params);
 $fx.params([
   {
     id: "number_id",
-    name: "It's a number",
+    name: "A number",
     type: "number",
     default: "1.2",
     options: {
-      max: 2,
+      max: 10,
       min: 1,
-      step: 0.05,
+      step: 0.1,
     },
   },
   {
@@ -49,7 +49,7 @@ $fx.params([
   },
   {
     id: "color_id",
-    name: "A color23",
+    name: "A color",
     type: "color",
     default: "ff000000",
   },
@@ -63,10 +63,10 @@ $fx.params([
     id: "string_id",
     name: "A string",
     type: "string",
-    default: "helloxx",
+    default: "hello",
     options: {
       minLength: 1,
-      maxLength: 3
+      maxLength: 5
     }
   },
 ]);
