@@ -20,7 +20,7 @@ params.push({
 params.push({
   name: "A color",
   type: "color",
-  default: "ff000000",
+  default: "ff0000ff",
 });
 $fx.params(params);
 
@@ -30,11 +30,11 @@ $fx.params([
     id: "number_id",
     name: "A number",
     type: "number",
-    default: "1.2",
+    default: 1.2,
     options: {
-      min: "-2",
-      max: "2",
-      step: "0.1",
+      min: -2,
+      max: 2,
+      step: 0.1,
     },
   },
   {
@@ -50,7 +50,7 @@ $fx.params([
     id: "color_id",
     name: "A color",
     type: "color",
-    default: "ff000000",
+    default: "ff0000ff",
   },
   {
     id: "boolean_id",
