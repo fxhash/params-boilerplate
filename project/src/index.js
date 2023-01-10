@@ -1,7 +1,6 @@
 console.log(fxhash)
 console.log(fxrand())
 
-document.domain = "localhost"
 
 const sp = new URLSearchParams(window.location.search);
 
@@ -33,9 +32,9 @@ $fx.params([
     type: "number",
     default: "1.2",
     options: {
-      max: 10,
-      min: 1,
-      step: 0.1,
+      min: "-2",
+      max: "2",
+      step: "0.1",
     },
   },
   {
