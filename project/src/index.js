@@ -33,7 +33,7 @@ $fx.params([
     default: 1.2,
     options: {
       min: -2,
-      max: 2,
+      max: 10,
       step: 0.1,
     },
   },
@@ -41,7 +41,7 @@ $fx.params([
     id: "select_id",
     name: "A selection",
     type: "select",
-    default: "orange",
+    default: "pear",
     options: {
       options: ["apple", "orange", "pear"],
     }
@@ -50,13 +50,13 @@ $fx.params([
     id: "color_id",
     name: "A color",
     type: "color",
-    default: "ff0000ff",
+    default: "#ff0000",
   },
   {
     id: "boolean_id",
     name: "A boolean",
     type: "boolean",
-    default: "true",
+    default: true,
   },
   {
     id: "string_id",
@@ -85,6 +85,7 @@ console.log("Current param values:")
 console.log($fx.getParams())
 console.log(fxparams)
 
+document.body.style.background = $fx.param("color_id")
 
 document.body.innerHTML = `
 <p>
