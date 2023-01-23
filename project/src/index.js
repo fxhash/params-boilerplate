@@ -3,26 +3,8 @@ console.log(fxrand())
 
 
 const sp = new URLSearchParams(window.location.search);
-
 console.log(sp);
 
-const params = [];
-params.push({
-  name: "It's a number",
-  type: "number",
-  default: "0.8",
-  options: {
-    min: "1",
-    max: "10",
-    step: "0.05",
-  },
-});
-params.push({
-  name: "A color",
-  type: "color",
-  default: "ff0000ff",
-});
-$fx.params(params);
 
 // this is how to define parameters
 $fx.params([
@@ -78,6 +60,7 @@ $fx.features({
   "Feature from params, its a number": $fx.param("number_id"),
 })
 
+// how to read a single parameter
 console.log($fx.param("number_id"));
 
 // log the parameters, for debugging purposes, artists won't have to do that
@@ -85,8 +68,8 @@ console.log("Current param values:")
 console.log($fx.getParams())
 console.log(fxparams)
 
+// update the document based on the parameters
 document.body.style.background = $fx.param("color_id")
-
 document.body.innerHTML = `
 <p>
 url: ${window.location.href}
