@@ -60,10 +60,28 @@
           bytesLength: () => 1,
         },
         color: {
-          deserialize: (input) => {
-            return "#" + input
-          },
+          deserialize: (input) => input,
           bytesLength: () => 4,
+          transform: (input) => {
+            const r = parseInt(input.slice(0,2), 16)
+            const g = parseInt(input.slice(2,4), 16)
+            const b = parseInt(input.slice(4,6), 16)
+            const a = parseInt(input.slice(6,8), 16)
+            return {
+              hex: {
+                rgb: '#' + input.slice(0,6),
+                rgba: '#' + input,
+              },
+              obj: {
+                rgb: { r, g, b},
+                rgba: { r, g, b, a},
+              },
+              arr: {
+                rgb: [r,g,b],
+                rgba: [r,g,b,a],
+              }
+            }
+          },
         },
         string: {
           deserialize: (input) => {
@@ -108,6 +126,17 @@
         return params
       }
 
+      const transformParamValues = (values, definitions) => {
+        const paramValues = {}
+        for (const def of definitions) {
+          const processor = processors[def.type]
+          const value = values[def.id]
+          // deserialize the bytes into the params
+          paramValues[def.id] = processor.transform ? processor.transform(value) : value;
+        }
+        return paramValues; 
+      }
+
       window.$fx = {
         // where params def & features will be stored
         _params: undefined,
@@ -123,18 +152,42 @@
           // todo: maybe do some validation on the dev side ?
           // or maybe not ?
           this._params = definition
-          this._paramValues = deserializeParams(fxparams, definition)
+          this._rawValues = deserializeParams(fxparams, definition)
+          this._paramValues = transformParamValues(this._rawValues, definition)
         },
         features: function(features) {
           this._features = features
         },
-        param: function(id) {
+        getFeature: function(id) {
+          return this._features[id]
+        },
+        getFeatures: function() {
+          return this._features
+        },
+        getParam: function(id) {
           return this._paramValues[id]
         },
         getParams: function() {
           return this._paramValues
+        },
+        getRawParam: function(id) {
+          return this._rawValues[id]
+        },
+        getRawParams: function() {
+          return this._rawValues
+        },
+        getDefinitions: function() {
+          return this._params
         }
       }
+      window.addEventListener("message", (event) => {
+        if (event.data === "fxhash_getParams") {
+          parent.postMessage({
+            id: "fxhash_getParams",
+            data: window.$fx.getDefinitions()
+          }, "*")
+        }
+      })
       // END NEW
 
       //---- /do not edit the following code
