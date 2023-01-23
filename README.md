@@ -27,7 +27,7 @@ fxhash requires you to use a javascript code snippet so that the platform can in
 
 **During the development stages, the snippet will generate a random hash each time the page is refreshed**. This way, it helps you reproduce the conditions in which your token will be executed on fxhash.
 
-The code snippet exposes one object `$fx` with the following structure: 
+The code snippet exposes the `$fx` object with the following structure: 
 
 ```typescript
 {
