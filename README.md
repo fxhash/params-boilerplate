@@ -2,17 +2,17 @@
 
 A boilerplate to automate and ease the creation of Generative Tokens on fx(hash) using fx(params).
 
-## Scope
+### Scope
 - provide a local environment in which you can iterate and use modern features from the javascript ecosystem
 - interactive environment to test your project with different params called fx(lens)
 - automate the creation of a .zip file ready to be uploaded on fxhash
 
-## Prerequisites
+### Prerequisites
 
 - node >= 14
 - npm >= 6.14.4
 
-## Getting started
+### Getting started
 
 - Clone this repository: `npx degit fxhash/params-boilerplate your_project_name`
 - Install dependencies and fx(lens): `npm install`
@@ -31,29 +31,42 @@ The code snippet exposes the `$fx` object with the following structure:
 
 ```typescript
 {
-	hash: String, // a random 64 characters hexadecimal string. This particular variable will be hardcoded with a static hash when someone mints a token from your GT
-	rand: () => Number, // a PRNG function that generates deterministic PRN between 0 and 1. Simply use it instead of Math.random().
-	preview: () => void, // trigger for capture module
-	isPreview: Boolean, // is TRUE when capture module is running the project
-	params: (definitions) => void, // sets your projects fx(params) definitions
-	getParam: (id: string) => any, // get transformed fx(params) value by id
-	getParams: () => any, // get all transformed fx(params) values
-	getRawParam: (id: string) => any, // get raw fx(params) value by id 
-	getRawParams: () => any, // get all raw fx(params) values
-	getDefinitions: () => any, // get all fx(params) definitions
-	features: (features) => void, // sets your projects features
-	getFeature: (id: string) => any, // get feature by id
-	getFeatures: () => any, // get all features
+  hash: String, // a random 64 characters hexadecimal string. This particular variable will be hardcoded with a static hash when someone mints a token from your GT
+  rand: () => Number, // a PRNG function that generates deterministic PRN between 0 and 1. Simply use it instead of Math.random().
+  preview: () => void, // trigger for capture module
+  isPreview: Boolean, // is TRUE when capture module is running the project
+  params: (definitions) => void, // sets your projects fx(params) definitions
+  getParam: (id: String) => any, // get transformed fx(params) value by id
+  getParams: () => any, // get all transformed fx(params) values
+  getRawParam: (id: String) => any, // get raw fx(params) value by id 
+  getRawParams: () => any, // get all raw fx(params) values
+  getDefinitions: () => any, // get all fx(params) definitions
+  features: (features) => void, // sets your projects features
+  getFeature: (id: String) => any, // get feature by id
+  getFeatures: () => any, // get all features
 }
 ```
 
-*The index.js of this boilerplate quickly demonstrates how to use whole "SDK"*.
+*The index.js of this boilerplate quickly demonstrates how to use the whole "SDK"*.
+
+###  How do Generative Tokens work
+
+This is how Generative Tokens work on fxhash:
+
+- you upload your project to the platform (see next section)
+- you mint your project
+- when a collector will mint its unique token from your Generative Token, a random hash will be hard-coded in the fxhash code snippet
+t- he token will now have its own index.html file, with a static hash, ensuring its immutability
+
+The [Guide to mint a Generative Token](https://www.fxhash.xyz/doc/artist/guide-publish-generative-token) give in-depth details about this process.
 
 ## Start your project with fx(lens)
 
+The fx(lens) offers an interactive environment to tweak and develop your generative token project.
+
 - `npm start`: Starts two local http server
 	- `localhost:3301` serves your project with live reloading
-	- `localhost:3000` serves fx(lens) you can connect to a token
+	- `localhost:3300` serves fx(lens) you can connect to a token
 - Visìt `http://localhost:3300/?target=http://localhost:3301` to see your local project within fx(lens)
 
 ## Publish your project
@@ -63,3 +76,4 @@ The code snippet exposes the `$fx` object with the following structure:
 Go to https://fxhash.xyz/sandbox/ and upload the project.zip file in there to see if it works properly. If your token does not work properly, you can iterate easily by updating your files, running $ npm run build again, and upload the zip file again.
 
 Finally, you can mint your token using the same `project.zip` file.
+
