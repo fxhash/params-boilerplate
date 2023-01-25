@@ -1,10 +1,13 @@
-# fx(params) boilerplate
+# fx(hash) boilerplate 2.0
+
+> **⚠️ Disclaimer**: This project is still in development. Some changes will be introduced over the next weeks, so please use this project with caution.
 
 A boilerplate to automate and ease the creation of Generative Tokens on fx(hash) using fx(params).
 
 ### Scope
+
 - provide a local environment in which you can iterate and use modern features from the javascript ecosystem
-- interactive environment to test your project with different params called fx(lens)
+- interactive environment to test your project with different seeds and params, called fx(lens)
 - automate the creation of a .zip file ready to be uploaded on fxhash
 
 ### Prerequisites
@@ -23,11 +26,12 @@ A boilerplate to automate and ease the creation of Generative Tokens on fx(hash)
 - Visit `http://localhost:3301/` to see your project in the browser
 
 ### fxhash snippet
+
 fxhash requires you to use a javascript code snippet so that the platform can inject some code when tokens will be generated from your Generative Token. The code snippet is already in the `index.html` file of this boilerplate, so you don't have to add it yourself.
 
 **During the development stages, the snippet will generate a random hash each time the page is refreshed**. This way, it helps you reproduce the conditions in which your token will be executed on fxhash.
 
-The code snippet exposes the `$fx` object with the following structure: 
+The code snippet exposes the `$fx` object with the following structure:
 
 ```typescript
 {
@@ -38,7 +42,7 @@ The code snippet exposes the `$fx` object with the following structure:
   params: (definitions) => void, // sets your projects fx(params) definitions
   getParam: (id: String) => any, // get transformed fx(params) value by id
   getParams: () => any, // get all transformed fx(params) values
-  getRawParam: (id: String) => any, // get raw fx(params) value by id 
+  getRawParam: (id: String) => any, // get raw fx(params) value by id
   getRawParams: () => any, // get all raw fx(params) values
   getDefinitions: () => any, // get all fx(params) definitions
   features: (features) => void, // sets your projects features
@@ -47,9 +51,9 @@ The code snippet exposes the `$fx` object with the following structure:
 }
 ```
 
-*The index.js of this boilerplate quickly demonstrates how to use the whole "SDK"*.
+_The index.js of this boilerplate quickly demonstrates how to use the whole "SDK"_.
 
-###  How do Generative Tokens work
+### How do Generative Tokens work
 
 This is how Generative Tokens work on fxhash:
 
@@ -65,8 +69,8 @@ The [Guide to mint a Generative Token](https://www.fxhash.xyz/doc/artist/guide-p
 The fx(lens) offers an interactive environment to tweak and develop your generative token project.
 
 - `npm start`: Starts two local http server
-	- `localhost:3301` serves your project with live reloading
-	- `localhost:3300` serves fx(lens) you can connect to a token
+  - `localhost:3301` serves your project with live reloading
+  - `localhost:3300` serves fx(lens) you can connect to a token
 - Visìt `http://localhost:3300/?target=http://localhost:3301` to see your local project within fx(lens)
 
 ## Publish your project
@@ -76,4 +80,3 @@ The fx(lens) offers an interactive environment to tweak and develop your generat
 Go to https://fxhash.xyz/sandbox/ and upload the project.zip file in there to see if it works properly. If your token does not work properly, you can iterate easily by updating your files, running $ npm run build again, and upload the zip file again.
 
 Finally, you can mint your token using the same `project.zip` file.
-
