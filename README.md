@@ -56,7 +56,7 @@ This is how Generative Tokens work on fxhash:
 - you upload your project to the platform (see next section)
 - you mint your project
 - when a collector will mint its unique token from your Generative Token, a random hash will be hard-coded in the fxhash code snippet
-t- he token will now have its own index.html file, with a static hash, ensuring its immutability
+- the token will now have its own index.html file, with a static hash, ensuring its immutability
 
 The [Guide to mint a Generative Token](https://www.fxhash.xyz/doc/artist/guide-publish-generative-token) give in-depth details about this process.
 
