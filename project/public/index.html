@@ -51,6 +51,16 @@
             return view.getFloat64(0)
           },
           bytesLength: () => 8,
+          constrain: (value, definition) =>  {
+            const min = definition?.options?.min || -Infinity
+            const max = definition?.options?.max || Infinity
+            const v = Math.min(Math.max(value, min), max)
+            if (definition?.options?.step) {
+              const t = 1.0 / definition?.options?.step
+              return Math.round(v * t) / t
+            }
+            return v; 
+          }
         },
         boolean: {
           // if value is "00" -> 0 -> false, otherwise we consider it's 1
@@ -82,6 +92,9 @@
               }
             }
           },
+          constrain: (value, definition) => {
+            return value.slice(0, 8).padEnd(8, "f")
+          },
         },
         string: {
           deserialize: (input) => {
@@ -95,12 +108,25 @@
             return rtn
           },
           bytesLength: () => 64 * 2,
+          constrain: (value, definition) => {
+            let v = value.slice(0, definition?.options?.maxLength || value.length);
+            if (v.length < definition?.options?.minLength) {
+              return v.padEnd(definition?.options?.minLength)
+            }
+            return v;
+          }
         },
         select: {
           deserialize: (input, definition) => {
             return definition.options.options[parseInt(input, 16)] || definition.default
           },
           bytesLength: () => 1,
+          constrain: (value, definition) => {
+            if(definition.options.options.includes(value)) {
+              return value;
+            }
+            return definition.options.options[0]
+          }
         }
       }
 
@@ -120,8 +146,8 @@
           const valueBytes = bytes.substring(0, processor.bytesLength() * 2)
           bytes = bytes.substring(processor.bytesLength() * 2)
           // deserialize the bytes into the params
-          params[def.id] = processor.deserialize(valueBytes, def)
-          // todo: make sure the value is correct based on constraints
+          const value =  processor.deserialize(valueBytes, def)
+          params[def.id] = processor.constrain?.(value, def) || value;
         }
         return params
       }
@@ -138,6 +164,7 @@
       }
 
       window.$fx = {
+        _processors: processors,
         // where params def & features will be stored
         _params: undefined,
         _features: undefined,
