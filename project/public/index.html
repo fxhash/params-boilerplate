@@ -52,6 +52,18 @@
           },
           bytesLength: () => 8,
         },
+        integer: {
+          deserialize: (input) => {
+            console.log('=========', input, typeof input)
+            const view = new DataView(new ArrayBuffer(8))
+            for (let i = 0; i < 8; i++) {
+              console.log(i, input.substring(i * 2, i * 2 + 2), parseInt(input.substring(i * 2, i * 2 + 2)), 16);
+              view.setUint8(i, parseInt(input.substring(i * 2, i * 2 + 2), 16))
+            }
+            return view.getBigInt64(0)
+          },
+          bytesLength: () => 8,
+        },
         boolean: {
           // if value is "00" -> 0 -> false, otherwise we consider it's 1
           deserialize: (input) => {
