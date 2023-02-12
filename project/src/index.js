@@ -8,13 +8,24 @@ console.log(sp);
 $fx.params([
   {
     id: "number_id",
-    name: "A number",
+    name: "A number/float64",
     type: "number",
-    default: 1.2,
+    default: Math.PI,
     options: {
-      min: -2,
+      min: 1,
       max: 10,
-      step: 0.1,
+      step: 0.00000000000001,
+    },
+  },
+  {
+    id: "bigint_id",
+    name: "A bigint",
+    type: "bigint",
+    default: BigInt(Number.MAX_SAFE_INTEGER * 2),
+    options: {
+      min: Number.MIN_SAFE_INTEGER * 4,
+      max: Number.MAX_SAFE_INTEGER * 4,
+      step: 1,
     },
   },
   {
@@ -83,9 +94,15 @@ url: ${window.location.href}
 hash: ${$fx.hash}
 </p>
 <p>
-params: 
+params:
 </p>
 <pre>
-${JSON.stringify($fx.getRawParams(), null, 2)}
+${JSON.stringify(
+  $fx.getRawParams(),
+  (key, value) => {
+    if (typeof value === "bigint") return value.toString()
+    return value
+  }, 2)
+}
 </pre>
 `
