@@ -1,0 +1,14 @@
+html {
+	background: white;
+	height: 100%;
+}
+
+body {
+	height: 100%;	
+	margin: 0;
+	padding: 10px;
+}
+
+p {
+	margin: 0;
+}

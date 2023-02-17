@@ -48,6 +48,7 @@ The code snippet exposes the `$fx` object with the following structure:
   features: (features) => void, // sets your projects features
   getFeature: (id: String) => any, // get feature by id
   getFeatures: () => any, // get all features
+  stringifyParams: (definitions) => string, // JSON.stringify that can handle bigint
 }
 ```
 
