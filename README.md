@@ -65,24 +65,6 @@ This is how Generative Tokens work on fxhash:
 
 The [Guide to mint a Generative Token](https://www.fxhash.xyz/doc/artist/guide-publish-generative-token) give in-depth details about this process.
 
-## Start your project with fx(lens)
-
-The fx(lens) offers an interactive environment to tweak and develop your generative token project.
-
-- `npm start`: Starts two local http server
-  - `localhost:3301` serves your project with live reloading
-  - `localhost:3300` serves fx(lens) you can connect to a token
-- Visìt `http://localhost:3300/?target=http://localhost:3301` to see your local project within fx(lens)
-
-## Publish your project
-
-- `npm run build`: Will create `dist-zipped/project.zip` file
-
-Go to https://fxhash.xyz/sandbox/ and upload the project.zip file in there to see if it works properly. If your token does not work properly, you can iterate easily by updating your files, running $ npm run build again, and upload the zip file again.
-
-Finally, you can mint your token using the same `project.zip` file.
-
-
 ## Available fx(params) types
 
 The following fx(params) types are available. All types share the same attributes but have different options available to e.g. constrain your parameters to your needs. 
@@ -224,3 +206,22 @@ The fx(snippet) exposes two different way  to retrieve fx(params) values:
 
 - `getParam` and `getParams` will return the transformed values as described above
 - `getRawParam` and `getRawParams` will return the raw values after being serialized from the bytestring and without any transformation
+
+## Start your project with fx(lens)
+
+The fx(lens) offers an interactive environment to tweak and develop your generative token project.
+
+- `npm start`: Starts two local http server
+  - `localhost:3301` serves your project with live reloading
+  - `localhost:3300` serves fx(lens) you can connect to a token
+- Visìt `http://localhost:3300/?target=http://localhost:3301` to see your local project within fx(lens)
+
+## Publish your project
+
+- `npm run build`: Will create `dist-zipped/project.zip` file
+
+Go to https://fxhash.xyz/sandbox/ and upload the project.zip file in there to see if it works properly. If your token does not work properly, you can iterate easily by updating your files, running $ npm run build again, and upload the zip file again.
+
+Finally, you can mint your token using the same `project.zip` file.
+
+
