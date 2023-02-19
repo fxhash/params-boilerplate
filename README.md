@@ -48,6 +48,7 @@ The code snippet exposes the `$fx` object with the following structure:
   features: (features) => void, // sets your projects features
   getFeature: (id: String) => any, // get feature by id
   getFeatures: () => any, // get all features
+  stringifyParams: (definitions) => string, // JSON.stringify that can handle bigint
 }
 ```
 
@@ -80,3 +81,105 @@ The fx(lens) offers an interactive environment to tweak and develop your generat
 Go to https://fxhash.xyz/sandbox/ and upload the project.zip file in there to see if it works properly. If your token does not work properly, you can iterate easily by updating your files, running $ npm run build again, and upload the zip file again.
 
 Finally, you can mint your token using the same `project.zip` file.
+
+
+## Available fx(params) types
+
+The following fx(params) types are available. All types share the same attributes but have different options available to e.g. constrain your parameters to your needs. 
+
+The available fx(params) types are: 
+
+- `number`: A `Number` aka float64 
+- `bigint`: A `BigInt` aka int64
+- `boolean`: A `boolean`
+- `color`: A color in 8-hexdigit and abbreviations
+- `string`: A 64 characters string
+- `select`: A selection of options
+
+_The index.js of this boilerplate quickly demonstrates a meaningfull configuration for each fx(params) type_.
+
+### Base Attributes
+
+All param share a few base attributes and have each param has a type specific options attribute to adjust the param to your needs.
+
+```typescript
+{
+  id: string,
+  name?: string,
+  type: "number" | "bigint" | "boolean" | "color" | "string" | "select",
+  default: string | number | bigint | boolean,
+  options: // type specific options (see below)
+}
+```
+
+### Options
+
+#### Type `number`
+
+All options are optional. 
+
+Options:
+
+```typescript
+{
+  min?: number,
+  max?: number,
+  step?: number,
+}
+```
+
+#### Type `bigint`
+
+All options are optional.
+
+Options: 
+
+```typescript
+{
+  min?: number | bigint,
+  max?: number | bigint,
+}
+```
+
+#### Type `boolean`
+
+No options.
+
+Options: 
+```typescript
+undefined
+```
+
+#### Type `color`
+
+No options.
+
+Options: 
+```typescript
+undefined
+```
+
+#### Type `string`
+
+All options are optional.
+
+Options:
+
+```typescript
+{
+  minLength?: number,
+  maxLength?: number,
+}
+```
+
+#### Type `select`
+
+Options are required. They define the options of the select
+
+Options:
+
+```typescript
+{
+  options: string[],
+}
+```
