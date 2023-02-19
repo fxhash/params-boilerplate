@@ -104,10 +104,10 @@ All param share a few base attributes and have each param has a type specific op
 
 ```typescript
 {
-  id: string
-  name?: string
-  type: "number" | "bigint" | "boolean" | "color" | "string" | "select"
-  default: string | number | bigint | boolean
+  id: string,
+  name?: string,
+  type: "number" | "bigint" | "boolean" | "color" | "string" | "select",
+  default: string | number | bigint | boolean,
   options: // type specific options (see below)
 }
 ```
@@ -122,9 +122,9 @@ Options:
 
 ```typescript
 {
-  min?: number
-  max?: number
-  step?: number
+  min?: number,
+  max?: number,
+  step?: number,
 }
 ```
 
@@ -136,8 +136,8 @@ Options:
 
 ```typescript
 {
-  min?: number | bigint
-  max?: number | bigint
+  min?: number | bigint,
+  max?: number | bigint,
 }
 ```
 
@@ -167,8 +167,8 @@ Options:
 
 ```typescript
 {
-  minLength?: number
-  maxLength?: number
+  minLength?: number,
+  maxLength?: number,
 }
 ```
 
@@ -180,6 +180,6 @@ Options:
 
 ```typescript
 {
-  options: string[]
+  options: string[],
 }
 ```
