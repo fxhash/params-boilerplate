@@ -8,20 +8,31 @@ console.log(sp);
 $fx.params([
   {
     id: "number_id",
-    name: "A number",
+    name: "A number/float64",
     type: "number",
-    default: 1.2,
+    //default: Math.PI,
     options: {
-      min: -2,
+      min: 1,
       max: 10,
-      step: 0.1,
+      step: 0.00000000000001,
+    },
+  },
+  {
+    id: "bigint_id",
+    name: "A bigint",
+    type: "bigint",
+    //default: BigInt(Number.MAX_SAFE_INTEGER * 2),
+    options: {
+      min: Number.MIN_SAFE_INTEGER * 4,
+      max: Number.MAX_SAFE_INTEGER * 4,
+      step: 1,
     },
   },
   {
     id: "select_id",
     name: "A selection",
     type: "select",
-    default: "pear",
+    //default: "pear",
     options: {
       options: ["apple", "orange", "pear"],
     }
@@ -30,19 +41,19 @@ $fx.params([
     id: "color_id",
     name: "A color",
     type: "color",
-    default: "ff0000",
+    //default: "ff0000",
   },
   {
     id: "boolean_id",
     name: "A boolean",
     type: "boolean",
-    default: true,
+    //default: true,
   },
   {
     id: "string_id",
     name: "A string",
     type: "string",
-    default: "hello",
+    //default: "hello",
     options: {
       minLength: 1,
       maxLength: 5
@@ -83,9 +94,12 @@ url: ${window.location.href}
 hash: ${$fx.hash}
 </p>
 <p>
-params: 
+params:
 </p>
 <pre>
-${JSON.stringify($fx.getRawParams(), null, 2)}
+${$fx.stringifyParams($fx.getRawParams())}
+</pre>
+<pre style="color: white;">
+${$fx.stringifyParams($fx.getRawParams())}
 </pre>
 `
