@@ -92,8 +92,6 @@ url: ${window.location.href}
 </p>
 <p>
 hash: ${$fx.hash}
-
-length: ${$fx.getParam("string_id").length}
 </p>
 <p>
 params:
