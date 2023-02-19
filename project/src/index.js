@@ -56,7 +56,7 @@ $fx.params([
     //default: "hello",
     options: {
       minLength: 1,
-      maxLength: 5
+      maxLength: 64
     }
   },
 ]);
@@ -92,6 +92,8 @@ url: ${window.location.href}
 </p>
 <p>
 hash: ${$fx.hash}
+
+length: ${$fx.getParam("string_id").length}
 </p>
 <p>
 params:

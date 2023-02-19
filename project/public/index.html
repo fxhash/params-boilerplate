@@ -150,9 +150,13 @@
           },
           bytesLength: () => 64 * 2,
           constrain: (value, definition) => {
-            let v = value.slice(0, definition?.options?.maxLength || value.length);
-            if (v.length < definition?.options?.minLength) {
-              return v.padEnd(definition?.options?.minLength)
+            let min = definition?.options?.minLength
+            if (isNaN(min)) min = 0
+            let max = definition?.options?.maxLength
+            if (isNaN(max)) max = 64
+            let v = value.slice(0, max);
+            if (v.length < min) {
+              return v.padEnd(min)
             }
             return v;
           },
