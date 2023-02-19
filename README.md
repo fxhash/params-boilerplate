@@ -218,6 +218,8 @@ The fx(lens) offers an interactive environment to tweak and develop your generat
 
 ## Publish your project
 
+> **⚠️ Disclaimer**: Sandbox is not yet compatible with fx(params).
+
 - `npm run build`: Will create `dist-zipped/project.zip` file
 
 Go to https://fxhash.xyz/sandbox/ and upload the project.zip file in there to see if it works properly. If your token does not work properly, you can iterate easily by updating your files, running $ npm run build again, and upload the zip file again.
