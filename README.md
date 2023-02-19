@@ -65,7 +65,7 @@ This is how Generative Tokens work on fxhash:
 
 The [Guide to mint a Generative Token](https://www.fxhash.xyz/doc/artist/guide-publish-generative-token) give in-depth details about this process.
 
-## Available fx(params) types
+## fx(params) types
 
 The following fx(params) types are available. All types share the same attributes but have different options available to e.g. constrain your parameters to your needs. 
 
