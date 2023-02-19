@@ -118,7 +118,7 @@ The fxhash snippet generates a random value for each parameter. The random value
 
 ### Type specific options
 
-#### Type `number`
+#### `number`
 
 All options are optional. 
 
@@ -131,7 +131,7 @@ Options:
 }
 ```
 
-#### Type `bigint`
+#### `bigint`
 
 All options are optional.
 
@@ -143,7 +143,7 @@ Options:
 }
 ```
 
-#### Type `boolean`
+#### `boolean`
 
 No options.
 
@@ -152,7 +152,7 @@ Options:
 undefined
 ```
 
-#### Type `color`
+#### `color`
 
 No options.
 
@@ -161,7 +161,7 @@ Options:
 undefined
 ```
 
-#### Type `string`
+#### `string`
 
 All options are optional.
 
@@ -173,7 +173,7 @@ Options:
 }
 ```
 
-#### Type `select`
+#### `select`
 
 Options are required. They define the options of the select
 
