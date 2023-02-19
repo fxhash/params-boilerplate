@@ -112,7 +112,7 @@ All param share a few base attributes and have each param has a type specific op
 }
 ```
 
-### Optionss
+### Options
 
 #### Type `number`
 
