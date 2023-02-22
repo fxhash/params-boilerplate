@@ -70,7 +70,7 @@
             let max = Number.MAX_SAFE_INTEGER
             if (typeof definition.options?.max !== "undefined")
               max = Number(definition.options.max)
-            max = Math.min(max, Number.MAX_SAFE_NTEGER)
+            max = Math.min(max, Number.MAX_SAFE_INTEGER)
             min = Math.max(min, Number.MIN_SAFE_INTEGER)
             const v = Math.random() * (max - min) + min
             if (definition?.options?.step) {
