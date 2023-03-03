@@ -22,8 +22,8 @@ A boilerplate to automate and ease the creation of Generative Tokens on fx(hash)
 
 ## Start developing your token project
 
-- `npm start:project`: Starts a local http server with live reloading enabled.
-- Visit `http://localhost:3301/` to see your project in the browser
+- `npm start`: Starts a local http server serving your project within fxlens and hot reloading enabled
+- Your browser should open automatically otherwise visit `http://localhost:3000/?target=http://localhost:3301/` to see your project in the browser
 
 ### fx(hash) snippet / fx(snippet)
 
