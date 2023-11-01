@@ -1,4 +1,5 @@
-> **⚠️ Disclaimer**: This project is still in development. Some changes will be introduced over the next weeks, so please use this project with caution.
+> **Warning**
+> This version of the boilerplate has been deprecated, all the different boilerplates have been unified under the [generic fxhash boilerplate](https://github.com/fxhash/fxhash-boilerplate).
 
 # fx(hash) boilerplate 2.0
 
